@@ -47,15 +47,12 @@ public class MobilePhone {
     }
 
     public boolean removeContact(Contact contact) {
-        // Kişi listede varsa
-        if (myContacts.contains(contact)) {
-            myContacts.remove(contact);  // Kişiyi sil
+        if(myContacts.contains(contact)) {
+            myContacts.remove(contact);
             System.out.println(contact.getName() + " kişisi başarıyla silindi.");
-            return true;  // Kişi silindiğinde true döndür
+            return true;
         }
-        // Kişi listede bulunmazsa
-        System.out.println(contact.getName() + " kişisi listede bulunamadı.");
-        return false;  // Kişi listede bulunamazsa false döndür
+        return false;
     }
 
     // Contact objesinin indeksini bulma (Contact türünde parametre alır)
@@ -76,7 +73,7 @@ public class MobilePhone {
 
     public Contact queryContact(String name) {
         for(Contact contact: myContacts) {
-            if(contact.getName().equals(name)) {
+            if(contact.getName() != null && contact.getName().equals(name)) {
                 return contact;
             }
         }
@@ -91,5 +88,13 @@ public class MobilePhone {
                 System.out.println(contact.getName() + "->" + contact.getPhoneNumber());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "MobilePhone{" +
+                "myNumber='" + myNumber + '\'' +
+                ", myContacts=" + myContacts +
+                '}';
     }
 }
